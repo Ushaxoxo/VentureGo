@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1036384790178",
+    "project_id": "venturego-57ab6",
+    "storage_bucket": "venturego-57ab6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036384790178:android:48e93f94ebeb872daf59fb",
+        "android_client_info": {
+          "package_name": "com.flutterflow.fluttermet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTRSFe-RjQ7xO1cHPSHdAXi6cJOp3Qhl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036384790178:android:85e9bdac8759efd3af59fb",
+        "android_client_info": {
+          "package_name": "com.mycompany.sample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTRSFe-RjQ7xO1cHPSHdAXi6cJOp3Qhl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
