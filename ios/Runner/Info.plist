@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>VentureGoInvestor</string>
+	<string>VentureGOBiz</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>VentureGoInvestor</string>
+	<string>VentureGOBiz</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>venturegoinvestor.com</string>
+        <string>venturegobiz.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>venturegoinvestor</string>
+        <string>venturegobiz</string>
         </array>
         </dict>
     </array>

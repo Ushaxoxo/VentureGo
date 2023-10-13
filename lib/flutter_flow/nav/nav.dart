@@ -79,18 +79,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? ListBusinessWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? CollaborationpageWidget() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? ListBusinessWidget() : LoginWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? CollaborationpageWidget()
+              : LoginWidget(),
         ),
         FFRoute(
-          name: 'signup',
-          path: '/signup',
-          builder: (context, params) => SignupWidget(),
+          name: 'SetUpProfile',
+          path: '/setUpProfile',
+          builder: (context, params) => SetUpProfileWidget(
+            userref: params.getParam(
+                'userref', ParamType.DocumentReference, false, ['users']),
+          ),
         ),
         FFRoute(
           name: 'login',
@@ -98,55 +102,56 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
-          name: 'Completeprofile',
-          path: '/completeprofile',
-          builder: (context, params) => CompleteprofileWidget(),
+          name: 'signup',
+          path: '/signup',
+          builder: (context, params) => SignupWidget(),
         ),
         FFRoute(
-          name: 'ListBusiness',
-          path: '/listBusiness',
-          builder: (context, params) => ListBusinessWidget(),
+          name: 'MarketAnalysisKS',
+          path: '/marketAnalysisKS',
+          builder: (context, params) => MarketAnalysisKSWidget(),
         ),
         FFRoute(
-          name: 'AboutBusiness',
-          path: '/aboutBusiness',
+          name: 'BusinessSetUp',
+          path: '/businessSetUp',
+          builder: (context, params) => BusinessSetUpWidget(),
+        ),
+        FFRoute(
+          name: 'ChatPage',
+          path: '/chatPage',
+          asyncParams: {
+            'chatUser': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => ChatPageWidget(
+            chatUser: params.getParam('chatUser', ParamType.Document),
+            chatRef: params.getParam(
+                'chatRef', ParamType.DocumentReference, false, ['chats']),
+          ),
+        ),
+        FFRoute(
+          name: 'AllChatsPage',
+          path: '/allChatsPage',
+          builder: (context, params) => AllChatsPageWidget(),
+        ),
+        FFRoute(
+          name: 'Collaborationpage',
+          path: '/collaborationpage',
+          builder: (context, params) => CollaborationpageWidget(),
+        ),
+        FFRoute(
+          name: 'businesspage',
+          path: '/businesspage',
           asyncParams: {
             'businessref': getDoc(['business'], BusinessRecord.fromSnapshot),
           },
-          builder: (context, params) => AboutBusinessWidget(
+          builder: (context, params) => BusinesspageWidget(
             businessref: params.getParam('businessref', ParamType.Document),
           ),
         ),
         FFRoute(
-          name: 'Dashboard',
-          path: '/dashboard',
-          builder: (context, params) => DashboardWidget(),
-        ),
-        FFRoute(
-          name: 'Aboutbusinessdummy',
-          path: '/aboutbusinessdummy',
-          builder: (context, params) => AboutbusinessdummyWidget(),
-        ),
-        FFRoute(
-          name: 'Investingpage',
-          path: '/investingpage',
-          requireAuth: true,
-          asyncParams: {
-            'businessDoc': getDoc(['business'], BusinessRecord.fromSnapshot),
-          },
-          builder: (context, params) => InvestingpageWidget(
-            businessDoc: params.getParam('businessDoc', ParamType.Document),
-          ),
-        ),
-        FFRoute(
-          name: 'YourInvestments',
-          path: '/yourInvestments',
-          builder: (context, params) => YourInvestmentsWidget(),
-        ),
-        FFRoute(
-          name: 'Investorsales',
-          path: '/investorsales',
-          builder: (context, params) => InvestorsalesWidget(),
+          name: 'collaborationpage2',
+          path: '/collaborationpage2',
+          builder: (context, params) => Collaborationpage2Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

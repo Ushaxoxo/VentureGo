@@ -208,9 +208,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 16.0,
                                       ),
-                                  maxLines: null,
                                   validator: _model
                                       .emailAddressControllerValidator
                                       .asValidator(context),
@@ -349,7 +347,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   }
 
                                   context.goNamedAuth(
-                                      'ListBusiness', context.mounted);
+                                      'Collaborationpage', context.mounted);
                                 },
                                 text: 'Login',
                                 options: FFButtonOptions(

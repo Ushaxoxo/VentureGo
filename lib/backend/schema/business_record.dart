@@ -21,11 +21,6 @@ class BusinessRecord extends FirestoreRecord {
   String get about => _about ?? '';
   bool hasAbout() => _about != null;
 
-  // "businesseval" field.
-  double? _businesseval;
-  double get businesseval => _businesseval ?? 0.0;
-  bool hasBusinesseval() => _businesseval != null;
-
   // "image" field.
   String? _image;
   String get image => _image ?? '';
@@ -35,11 +30,6 @@ class BusinessRecord extends FirestoreRecord {
   String? _name;
   String get name => _name ?? '';
   bool hasName() => _name != null;
-
-  // "user" field.
-  DocumentReference? _user;
-  DocumentReference? get user => _user;
-  bool hasUser() => _user != null;
 
   // "shortabout" field.
   String? _shortabout;
@@ -55,6 +45,16 @@ class BusinessRecord extends FirestoreRecord {
   String? _location;
   String get location => _location ?? '';
   bool hasLocation() => _location != null;
+
+  // "businesseval" field.
+  double? _businesseval;
+  double get businesseval => _businesseval ?? 0.0;
+  bool hasBusinesseval() => _businesseval != null;
+
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
 
   // "smallbusiness" field.
   String? _smallbusiness;
@@ -76,25 +76,25 @@ class BusinessRecord extends FirestoreRecord {
   double get fundraised => _fundraised ?? 0.0;
   bool hasFundraised() => _fundraised != null;
 
-  // "investors" field.
-  List<DocumentReference>? _investors;
-  List<DocumentReference> get investors => _investors ?? const [];
-  bool hasInvestors() => _investors != null;
+  // "bid" field.
+  String? _bid;
+  String get bid => _bid ?? '';
+  bool hasBid() => _bid != null;
 
   void _initializeFields() {
     _about = snapshotData['about'] as String?;
-    _businesseval = castToType<double>(snapshotData['businesseval']);
     _image = snapshotData['image'] as String?;
     _name = snapshotData['name'] as String?;
-    _user = snapshotData['user'] as DocumentReference?;
     _shortabout = snapshotData['shortabout'] as String?;
     _type = snapshotData['type'] as String?;
     _location = snapshotData['location'] as String?;
+    _businesseval = castToType<double>(snapshotData['businesseval']);
+    _user = snapshotData['user'] as DocumentReference?;
     _smallbusiness = snapshotData['smallbusiness'] as String?;
     _businesstype = snapshotData['businesstype'] as String?;
     _fundrequired = castToType<double>(snapshotData['fundrequired']);
     _fundraised = castToType<double>(snapshotData['fundraised']);
-    _investors = getDataList(snapshotData['investors']);
+    _bid = snapshotData['bid'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -133,32 +133,34 @@ class BusinessRecord extends FirestoreRecord {
 
 Map<String, dynamic> createBusinessRecordData({
   String? about,
-  double? businesseval,
   String? image,
   String? name,
-  DocumentReference? user,
   String? shortabout,
   String? type,
   String? location,
+  double? businesseval,
+  DocumentReference? user,
   String? smallbusiness,
   String? businesstype,
   double? fundrequired,
   double? fundraised,
+  String? bid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'about': about,
-      'businesseval': businesseval,
       'image': image,
       'name': name,
-      'user': user,
       'shortabout': shortabout,
       'type': type,
       'location': location,
+      'businesseval': businesseval,
+      'user': user,
       'smallbusiness': smallbusiness,
       'businesstype': businesstype,
       'fundrequired': fundrequired,
       'fundraised': fundraised,
+      'bid': bid,
     }.withoutNulls,
   );
 
@@ -170,37 +172,36 @@ class BusinessRecordDocumentEquality implements Equality<BusinessRecord> {
 
   @override
   bool equals(BusinessRecord? e1, BusinessRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.about == e2?.about &&
-        e1?.businesseval == e2?.businesseval &&
         e1?.image == e2?.image &&
         e1?.name == e2?.name &&
-        e1?.user == e2?.user &&
         e1?.shortabout == e2?.shortabout &&
         e1?.type == e2?.type &&
         e1?.location == e2?.location &&
+        e1?.businesseval == e2?.businesseval &&
+        e1?.user == e2?.user &&
         e1?.smallbusiness == e2?.smallbusiness &&
         e1?.businesstype == e2?.businesstype &&
         e1?.fundrequired == e2?.fundrequired &&
         e1?.fundraised == e2?.fundraised &&
-        listEquality.equals(e1?.investors, e2?.investors);
+        e1?.bid == e2?.bid;
   }
 
   @override
   int hash(BusinessRecord? e) => const ListEquality().hash([
         e?.about,
-        e?.businesseval,
         e?.image,
         e?.name,
-        e?.user,
         e?.shortabout,
         e?.type,
         e?.location,
+        e?.businesseval,
+        e?.user,
         e?.smallbusiness,
         e?.businesstype,
         e?.fundrequired,
         e?.fundraised,
-        e?.investors
+        e?.bid
       ]);
 
   @override

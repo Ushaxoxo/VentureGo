@@ -76,11 +76,6 @@ class UsersRecord extends FirestoreRecord {
   bool get isstartup => _isstartup ?? false;
   bool hasIsstartup() => _isstartup != null;
 
-  // "investments" field.
-  List<DocumentReference>? _investments;
-  List<DocumentReference> get investments => _investments ?? const [];
-  bool hasInvestments() => _investments != null;
-
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -94,7 +89,6 @@ class UsersRecord extends FirestoreRecord {
     _isnewlocalbusiness = snapshotData['isnewlocalbusiness'] as bool?;
     _isexpandlocalbusiness = snapshotData['isexpandlocalbusiness'] as bool?;
     _isstartup = snapshotData['isstartup'] as bool?;
-    _investments = getDataList(snapshotData['investments']);
   }
 
   static CollectionReference get collection =>
@@ -169,7 +163,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
@@ -181,8 +174,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.bio == e2?.bio &&
         e1?.isnewlocalbusiness == e2?.isnewlocalbusiness &&
         e1?.isexpandlocalbusiness == e2?.isexpandlocalbusiness &&
-        e1?.isstartup == e2?.isstartup &&
-        listEquality.equals(e1?.investments, e2?.investments);
+        e1?.isstartup == e2?.isstartup;
   }
 
   @override
@@ -198,8 +190,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.bio,
         e?.isnewlocalbusiness,
         e?.isexpandlocalbusiness,
-        e?.isstartup,
-        e?.investments
+        e?.isstartup
       ]);
 
   @override

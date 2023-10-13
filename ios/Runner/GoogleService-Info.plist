@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mycompany.sample</string>
+	<string>com.mycompany.venturegobiz</string>
 	<key>PROJECT_ID</key>
 	<string>venturego-57ab6</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1036384790178:ios:21cfc496f91e2187af59fb</string>
+	<string>1:1036384790178:ios:cfd522270fe7d5aaaf59fb</string>
 </dict>
 </plist>
